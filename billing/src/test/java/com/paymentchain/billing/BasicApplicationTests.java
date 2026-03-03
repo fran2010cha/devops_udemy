@@ -71,7 +71,7 @@ public class BasicApplicationTests extends AbstractIntegrationTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/billing/v1")
                 .contentType("application/json"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
+                .andExpect(MockMvcResultgit diMatchers.jsonPath("$").isArray())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(1));
     }
 
@@ -83,7 +83,6 @@ public class BasicApplicationTests extends AbstractIntegrationTest {
         dto.setId(defaultId);
 
         when(invoiceRepository.findById(defaultId)).thenReturn(Optional.of(dto));
-
         // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/billing/v1/{id}", defaultId)
                 .contentType("application/json"))
